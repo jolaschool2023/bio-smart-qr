@@ -1,5 +1,6 @@
 node_modules/
 .vercel/
+BIOCOLECCION/
 **/storage/*.db*
 **/storage/uploads/
 **/storage/admin.json

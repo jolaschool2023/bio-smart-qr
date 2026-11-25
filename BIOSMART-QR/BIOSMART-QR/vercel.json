@@ -1,9 +1,0 @@
-{
-  "$schema": "https://openapi.vercel.sh/vercel.json",
-  "version": 2,
-  "env": {
-    "BIOSMART_DB": "/tmp/biosmart.db",
-    "BIOSMART_UPLOADS": "/tmp/biosmart-uploads",
-    "BIOSMART_ADMIN_JSON": "/tmp/admin.json"
-  }
-}
