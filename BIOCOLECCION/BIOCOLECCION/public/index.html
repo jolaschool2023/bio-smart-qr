@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Biodiversidad · Mi colección y clasificación</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%2316a34a' d='M12 2c5 3 8 7 8 12a8 8 0 0 1-16 0c0-3 1.5-5.5 4-7.5C6.5 10 6 12 6 14a6 6 0 0 0 12 0c0-4-2.5-8-6-12z'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand__logo" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M12 2c5 3 8 7 8 12a8 8 0 0 1-16 0c0-3 1.5-5.5 4-7.5C6.5 10 6 12 6 14a6 6 0 0 0 12 0c0-4-2.5-8-6-12z"/></svg>
+      </span>
+      <span class="brand__text">
+        <strong>Biodiversidad</strong>
+        <small>Registro de animales observados</small>
+      </span>
+    </div>
+
+    <nav class="tabs" aria-label="Secciones">
+      <button class="tab" id="tab-collection" data-view="collection" type="button">🐾 Mi colección</button>
+      <button class="tab" id="tab-ranking" data-view="ranking" type="button">🏆 Clasificación</button>
+    </nav>
+
+    <div class="authbox" id="profilebox"></div>
+  </header>
+
+  <main class="wrap">
+
+    <!-- ==================== MI COLECCIÓN ==================== -->
+    <section class="view hidden" id="view-collection" aria-label="Mi colección">
+      <div class="hero">
+        <div class="hero__text">
+          <h1>MI COLECCIÓN</h1>
+          <p class="muted">Animales que <strong>tú</strong> has observado personalmente y registrado.</p>
+        </div>
+        <div class="chip" id="collection-count">0 animales</div>
+      </div>
+
+      <div class="grid2">
+        <form class="card form" id="collection-form" novalidate>
+          <h2>Registrar un animal observado</h2>
+          <p class="muted">Solo registra animales que hayas visto con tus propios ojos.</p>
+          <label>Nombre del animal
+            <input type="text" name="animalName" required maxlength="120" placeholder="Ej.: Mariposa monarca">
+          </label>
+          <label>Especie
+            <input type="text" name="species" required maxlength="120" placeholder="Ej.: Danaus plexippus">
+          </label>
+          <label class="check">
+            <input type="checkbox" name="observed" required>
+            <span>Confirmo que observé personalmente este animal</span>
+          </label>
+          <p class="form-error hidden" id="collection-error" role="alert"></p>
+          <button class="btn btn--primary btn--block" type="submit">＋ Registrar animal</button>
+        </form>
+
+        <div class="card">
+          <h2>Mis registros</h2>
+          <div class="table-scroll">
+            <table class="table" id="collection-table">
+              <thead>
+                <tr><th>#</th><th>Animal</th><th>Especie</th><th>Fecha</th></tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+          <p class="empty hidden" id="collection-empty">🌿 Todavía no has registrado animales. Usa el formulario para agregar el primero.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CLASIFICACIÓN ==================== -->
+    <section class="view hidden" id="view-ranking" aria-label="Clasificación general">
+      <div class="hero">
+        <div class="hero__text">
+          <h1>CLASIFICACIÓN GENERAL</h1>
+          <p class="muted">Cantidad de animales registrados por cada participante, de mayor a menor.</p>
+        </div>
+        <div class="chip" id="ranking-total"></div>
+      </div>
+
+      <div class="card">
+        <div class="table-scroll">
+          <table class="table table--rank" id="ranking-table">
+            <thead>
+              <tr><th>Posición</th><th>Participante</th><th class="ta-r">Animales registrados</th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <p class="empty hidden" id="ranking-empty">Aún no hay registros en la clasificación.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== NOMBRE VISIBLE ==================== -->
+  <div class="modal hidden" id="name-modal" role="dialog" aria-modal="true" aria-label="Tu nombre">
+    <div class="modal__back" data-close-name></div>
+    <div class="modal__card card">
+      <h2>¿Cómo te llamas? 🌱</h2>
+      <p class="muted">Sin cuentas ni contraseñas: tu nombre aparece en tu colección y en la clasificación. Puedes cambiarlo cuando quieras.</p>
+      <form id="name-form" class="form" novalidate>
+        <label>Nombre o apodo
+          <input type="text" name="name" id="name-input" required maxlength="120" autocomplete="nickname" placeholder="Ej.: Mariana">
+        </label>
+        <p class="form-error hidden" id="name-error" role="alert"></p>
+        <div class="modal__actions">
+          <button class="btn btn--ghost" type="button" id="name-anonymous">Seguir como Anónimo</button>
+          <button class="btn btn--primary" type="submit">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast hidden" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>

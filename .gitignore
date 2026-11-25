@@ -1,0 +1,7 @@
+node_modules/
+.vercel/
+**/storage/*.db*
+**/storage/uploads/
+**/storage/admin.json
+**/storage/test-*
+**/storage/loadbot-*
