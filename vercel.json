@@ -6,13 +6,10 @@
     "BIOSMART_UPLOADS": "/tmp/biosmart-uploads",
     "BIOSMART_ADMIN_JSON": "/tmp/admin.json"
   },
-  "rewrites": [
-    { "source": "/api/:path*", "destination": "/api/:path*" },
-    { "source": "/js/:path*", "destination": "/public/js/:path*" },
-    { "source": "/css/:path*", "destination": "/public/css/:path*" },
-    { "source": "/img/:path*", "destination": "/public/img/:path*" },
-    { "source": "/lib/:path*", "destination": "/public/lib/:path*" },
-    { "source": "/favicon.ico", "destination": "/public/favicon.ico" },
-    { "source": "/(.*)", "destination": "/public/index.html" }
+  "routes": [
+    { "src": "/api/(.*)", "dest": "/api/$1" },
+    { "src": "/(js|css|img|lib)/(.*)", "dest": "/public/$1/$2" },
+    { "src": "/favicon.ico", "dest": "/public/favicon.ico" },
+    { "src": "/(.*)", "dest": "/public/index.html" }
   ]
 }
